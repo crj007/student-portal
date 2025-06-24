@@ -6,19 +6,19 @@
   <title>Student Login</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="login-container">
-    <h2>Student Login</h2>
-    <input type="text" id="username" placeholder="Enter Username" />
-    
+<body class="modern-bg">
+  <div class="glass-card">
+    <h2>🎓 Student Login</h2>
+    <input type="text" id="username" placeholder="👤 Username" />
+
     <select id="board">
-      <option value="">Select Board</option>
+      <option value="">🏫 Select Board</option>
       <option value="CBSE">CBSE</option>
       <option value="IGCSE">IGCSE</option>
     </select>
 
     <select id="class">
-      <option value="">Select Class</option>
+      <option value="">📘 Select Class</option>
       <option value="9">Class 9</option>
       <option value="10">Class 10</option>
       <option value="11">Class 11</option>
@@ -27,11 +27,11 @@
       <option value="A">A Level</option>
     </select>
 
-    <button onclick="generatePassword()">Generate Password</button>
-    <p id="generatedPassword"></p>
+    <button onclick="generatePassword()">🔐 Generate Password</button>
+    <p id="generatedPassword" class="password-display"></p>
 
     <input type="text" id="passwordInput" placeholder="Paste the password here" />
-    <button onclick="login()">Login</button>
+    <button class="primary-btn" onclick="login()">➡️ Login</button>
   </div>
 
   <script src="script.js"></script>
