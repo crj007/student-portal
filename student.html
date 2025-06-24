@@ -4,90 +4,57 @@
   <meta charset="UTF-8" />
   <title>Student Results</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Google Font for Material UI style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body class="result-bg">
   <div class="result-card">
     <img src="logo.jpg" alt="School Logo" class="school-logo" />
     <h1 class="school-name">Cambridge International School Guwahati</h1>
-    <h2 class="assessment-title">📘 First Assessment 2025–26</h2>
-    <h2>📄 Student Details</h2>
+    <div class="assessment-title">📊 First Assessment 2025</div>
+
+    <h2>Student Details</h2>
     <p><strong>Roll No:</strong> <span id="roll"></span></p>
     <p><strong>Name:</strong> <span id="name"></span></p>
     <p><strong>Class:</strong> <span id="cls"></span></p>
 
-    <h3>📊 Marks Scored:</h3>
+    <h2>Marks Scored</h2>
     <ul id="marksList" class="marks-list"></ul>
   </div>
 
   <script>
-    const username = sessionStorage.getItem("username")?.toLowerCase().trim();
-    const roll = sessionStorage.getItem("roll")?.trim();
+    const username = sessionStorage.getItem("username")?.toLowerCase();
+    const roll = sessionStorage.getItem("roll");
     const classSelected = sessionStorage.getItem("class");
     const board = sessionStorage.getItem("board");
 
-    // Check for session validity
     if (!username || !roll || !classSelected || !board) {
-      alert("Unauthorized access! Please login again.");
+      alert("Unauthorized access!");
       window.location.href = "index.html";
     }
 
-    // Load data and match student
-    fetch('student_data.json')
+    fetch("student_data.json")
       .then(res => res.json())
       .then(data => {
-        const students = data[board]?.[classSelected];
-
-        // Debug logs for testing
-        console.log("Board:", board);
-        console.log("Class:", classSelected);
-        console.log("Username:", username);
-        console.log("Roll:", roll);
-        console.log("Student List:", students);
-
-        if (!students) {
-          document.querySelector('.result-card').innerHTML = "<h3>No data found for selected board/class.</h3>";
-          return;
-        }
-
+        const students = data[board][classSelected];
         const student = students.find(s =>
-          s.username.toLowerCase().trim() === username &&
-          s.roll.toString().trim() === roll
+          s.username.toLowerCase() === username && s.roll === roll
         );
-
-        console.log("Matched student:", student);
 
         if (student) {
           document.getElementById("roll").textContent = student.roll;
           document.getElementById("name").textContent = student.fullname;
-          document.getElementById("cls").textContent =
-            `${board} - ${["AS", "A"].includes(classSelected) ? "Level" : "Class"} ${classSelected}`;
+          document.getElementById("cls").textContent = `${board} - Class ${classSelected}`;
 
           const ul = document.getElementById("marksList");
-         for (let subject in student.marks) {
-  const markInfo = student.marks[subject];
-  const li = document.createElement("li");
-
-  if (typeof markInfo === "number") {
-    // IGCSE - single mark
-    li.textContent = `${subject}: ${markInfo}/50`;
-  } else if (typeof markInfo === "object") {
-    // CBSE - split into Theory + Practical
-    const theory = markInfo["Theory"] ?? 0;
-    const practical = markInfo["Practical"] ?? 0;
-    const total = theory + practical;
-    li.innerHTML = `${subject}: Theory - ${theory}/40, Practical - ${practical}/10 <br><strong>Total:</strong> ${total}/50`;
-  }
-
-  ul.appendChild(li);
-
+          for (let subject in student.marks) {
+            let li = document.createElement("li");
+            li.innerHTML = `<span>${subject}</span><span>${student.marks[subject]} / 50</span>`;
+            ul.appendChild(li);
           }
         } else {
-          document.querySelector('.result-card').innerHTML = "<h3>No record found for this student.</h3>";
+          document.querySelector(".result-card").innerHTML = "<h3>No record found</h3>";
         }
-      })
-      .catch(err => {
-        console.error("Error loading student data:", err);
-        document.querySelector('.result-card').innerHTML = "<h3>Error loading data.</h3>";
       });
   </script>
 </body>
