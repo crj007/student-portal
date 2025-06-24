@@ -16,41 +16,36 @@
     <div class="login-card">
       <h2>🎓 Student Login</h2>
 
-      <div class="form-grid">
-        <div class="form-col">
-          <input type="text" id="roll" placeholder="🎫 Roll Number" />
-          <select id="board">
-            <option value="">🏫 Select Board</option>
-            <option value="CBSE">CBSE</option>
-            <option value="IGCSE">IGCSE</option>
-          </select>
-          <button onclick="generatePassword()">🔐 Generate Password</button>
-        </div>
+     <div class="form-grid">
+  <input type="text" id="roll" placeholder="🎫 Roll Number" />
+  <input type="text" id="username" placeholder="👤 First Name" />
 
-        <div class="form-col">
-          <input type="text" id="username" placeholder="👤 First Name" />
-          <select id="class">
-            <option value="">📘 Select Class</option>
-            <option value="9">Class 9</option>
-            <option value="10">Class 10</option>
-            <option value="11">Class 11</option>
-            <option value="12">Class 12</option>
-            <option value="AS">AS Level</option>
-            <option value="A">A Level</option>
-          </select>
-          <input type="text" id="passwordInput" placeholder="Paste the password here" />
-        </div>
-      </div>
+  <select id="board">
+    <option value="">🏫 Select Board</option>
+    <option value="CBSE">CBSE</option>
+    <option value="IGCSE">IGCSE</option>
+  </select>
 
-      <p id="generatedPassword" class="password-display"></p>
+  <select id="class">
+    <option value="">📘 Select Class</option>
+    <option value="9">Class 9</option>
+    <option value="10">Class 10</option>
+    <option value="11">Class 11</option>
+    <option value="12">Class 12</option>
+    <option value="AS">AS Level</option>
+    <option value="A">A Level</option>
+  </select>
 
-      <div class="button-row">
-        <button class="primary-btn" onclick="login()">➡️ Login</button>
-        <button class="secondary-btn" onclick="clearFields()">🧹 Clear Fields</button>
-      </div>
-    </div>
+  <button onclick="generatePassword()" class="full-width">🔐 Generate Password</button>
+  <p id="generatedPassword" class="password-display full-width"></p>
+
+  <input type="text" id="passwordInput" placeholder="Paste the password here" class="full-width" />
+
+  <div class="button-row full-width">
+    <button class="primary-btn" onclick="login()">➡️ Login</button>
+    <button class="secondary-btn" onclick="clearFields()">🧹 Clear Fields</button>
   </div>
-
+</div>
   <script src="script.js"></script>
 </body>
 </html>
