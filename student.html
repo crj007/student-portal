@@ -19,39 +19,46 @@
   </div>
 
   <script>
-    const username = sessionStorage.getItem("username")?.toLowerCase();
-    const roll = sessionStorage.getItem("roll");
-    const classSelected = sessionStorage.getItem("class");
-    const board = sessionStorage.getItem("board");
+  const username = sessionStorage.getItem("username")?.toLowerCase();
+  const roll = sessionStorage.getItem("roll");
+  const classSelected = sessionStorage.getItem("class");
+  const board = sessionStorage.getItem("board");
 
-    if (!username || !roll || !classSelected || !board) {
-      alert("Unauthorized access!");
-      window.location.href = "index.html";
-    }
+  if (!username || !roll || !classSelected || !board) {
+    alert("Unauthorized access!");
+    window.location.href = "index.html";
+    return;
+  }
 
-    fetch('student_data.json')
-      .then(res => res.json())
-      .then(data => {
-        const students = data[board][classSelected];
-        const student = students.find(s =>
-          s.username.toLowerCase() === username && s.roll === roll
-        );
+  fetch('student_data.json')
+    .then(res => res.json())
+    .then(data => {
+      if (!data[board] || !data[board][classSelected]) {
+        document.querySelector('.result-card').innerHTML = "<h3>No data found for selected board/class.</h3>";
+        return;
+      }
 
-        if (student) {
-          document.getElementById("roll").textContent = student.roll;
-          document.getElementById("name").textContent = student.fullname;
-          document.getElementById("cls").textContent = `${board} - Class ${classSelected}`;
+      const students = data[board][classSelected];
+      const student = students.find(s =>
+        s.username.toLowerCase() === username && s.roll === roll
+      );
 
-          const ul = document.getElementById("marksList");
-          for (let subject in student.marks) {
-            let li = document.createElement("li");
-            li.textContent = `${subject}: ${student.marks[subject]}`;
-            ul.appendChild(li);
-          }
-        } else {
-          document.querySelector('.result-card').innerHTML = "<h3>No record found</h3>";
+      if (student) {
+        document.getElementById("roll").textContent = student.roll;
+        document.getElementById("name").textContent = student.fullname;
+        document.getElementById("cls").textContent = `${board} - ${classSelected === 'AS' || classSelected === 'A' ? 'Level' : 'Class'} ${classSelected}`;
+
+        const ul = document.getElementById("marksList");
+        for (let subject in student.marks) {
+          let li = document.createElement("li");
+          li.textContent = `${subject}: ${student.marks[subject]}`;
+          ul.appendChild(li);
         }
-      });
-  </script>
+      } else {
+        document.querySelector('.result-card').innerHTML = "<h3>No record found for this student.</h3>";
+      }
+    });
+</script>
+
 </body>
 </html>
