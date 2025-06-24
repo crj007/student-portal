@@ -46,10 +46,13 @@
     <button class="secondary-btn" onclick="clearFields()">🧹 Clear Fields</button>
   </div>
 </div>
-  <script src="script.js"></script>
+ <script src="script.js"></script>
 <script>
-  // Prevent login with expired password when user returns with Back button
   window.onload = () => {
+    // Clear the flag so password can't be reused on refresh
+    sessionStorage.removeItem("usedOnce");
+
+    // Show expired password message if needed
     const passwordDisplay = document.getElementById("generatedPassword");
     const storedPass = sessionStorage.getItem("usedPass");
 
@@ -57,7 +60,7 @@
       passwordDisplay.textContent = "❌ This password has expired. Please generate a new one.";
     }
 
-    // Optional: Disable login button if password expired
+    // Disable login button if password is expired
     const loginBtn = document.querySelector('.primary-btn');
     if (storedPass && loginBtn) {
       loginBtn.disabled = true;
@@ -66,8 +69,7 @@
     }
   };
 </script>
-
-      
+   
 </body>
 </html>
 
