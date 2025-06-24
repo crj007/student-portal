@@ -30,3 +30,12 @@ function login() {
     alert("Incorrect password");
   }
 }
+function clearFields() {
+  document.getElementById("roll").value = "";
+  document.getElementById("username").value = "";
+  document.getElementById("board").value = "";
+  document.getElementById("class").value = "";
+  document.getElementById("passwordInput").value = "";
+  document.getElementById("generatedPassword").textContent = "";
+}
+
