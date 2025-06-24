@@ -63,10 +63,23 @@
             `${board} - ${["AS", "A"].includes(classSelected) ? "Level" : "Class"} ${classSelected}`;
 
           const ul = document.getElementById("marksList");
-          for (let subject in student.marks) {
-            const li = document.createElement("li");
-            li.textContent = `${subject}: ${student.marks[subject]}`;
-            ul.appendChild(li);
+         for (let subject in student.marks) {
+  const markInfo = student.marks[subject];
+  const li = document.createElement("li");
+
+  if (typeof markInfo === "number") {
+    // IGCSE - single mark
+    li.textContent = `${subject}: ${markInfo}/50`;
+  } else if (typeof markInfo === "object") {
+    // CBSE - split into Theory + Practical
+    const theory = markInfo["Theory"] ?? 0;
+    const practical = markInfo["Practical"] ?? 0;
+    const total = theory + practical;
+    li.innerHTML = `${subject}: Theory - ${theory}/40, Practical - ${practical}/10 <br><strong>Total:</strong> ${total}/50`;
+  }
+
+  ul.appendChild(li);
+
           }
         } else {
           document.querySelector('.result-card').innerHTML = "<h3>No record found for this student.</h3>";
