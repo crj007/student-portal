@@ -1,4 +1,5 @@
 /* ===== Login Page Styles ===== */
+
 body.login-bg {
   margin: 0;
   padding: 0;
@@ -17,22 +18,23 @@ body.login-bg {
   padding: 2rem;
   border-radius: 12px;
   color: #fff;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  box-sizing: border-box;
 }
 
 .login-card {
-  width: 320px;
+  width: 100%;
+  max-width: 350px;
   text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .login-card h2 {
   margin-bottom: 1rem;
   color: #fff;
-  font-size: 1.6rem;
 }
 
-input,
-select {
+input, select {
   width: 100%;
   padding: 10px;
   margin: 8px 0;
@@ -55,6 +57,7 @@ button {
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .primary-btn {
@@ -66,6 +69,16 @@ button {
   background-color: #0d8ae0;
 }
 
+.secondary-btn {
+  background-color: #ccc;
+  color: #333;
+  margin-top: 6px;
+}
+
+.secondary-btn:hover {
+  background-color: #bbb;
+}
+
 .password-display {
   background-color: #fff;
   color: #000;
@@ -73,15 +86,15 @@ button {
   margin-top: 10px;
   border-radius: 6px;
   font-family: monospace;
-  font-size: 0.9rem;
 }
 
 /* ===== Result Page Styles ===== */
+
 body.result-bg {
   margin: 0;
   padding: 2rem;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom right, #eaf4ff, #ffffff);
+  background: #f4f4f4;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -93,30 +106,28 @@ body.result-bg {
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  width: 90%;
+  width: 100%;
   max-width: 600px;
-  animation: fadeIn 0.6s ease-in-out;
+  box-sizing: border-box;
 }
 
 .school-logo {
-  width: 90px;
+  width: 80px;
   height: auto;
   display: block;
-  margin: 0 auto 12px;
+  margin: 0 auto 10px;
 }
 
 .school-name {
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: #0056b3;
-  font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 h2 {
   margin-top: 0.5rem;
   color: #222;
-  font-size: 1.3rem;
 }
 
 .marks-list {
@@ -127,14 +138,31 @@ h2 {
 .marks-list li {
   background: #e6f2ff;
   margin-bottom: 6px;
-  padding: 10px 14px;
+  padding: 10px;
   border-radius: 6px;
-  font-size: 1rem;
-  color: #003366;
 }
 
-/* Fade animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* ===== Mobile Responsive ===== */
+
+@media (max-width: 500px) {
+  .login-card, .result-card {
+    padding: 1rem;
+    margin: 0 1rem;
+  }
+
+  .school-logo {
+    width: 60px;
+  }
+
+  .school-name {
+    font-size: 1.2rem;
+  }
+
+  h2, h3 {
+    font-size: 1.1rem;
+  }
+
+  .marks-list li {
+    font-size: 0.95rem;
+  }
 }
