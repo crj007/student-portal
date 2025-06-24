@@ -38,6 +38,8 @@ function login() {
     generatedPass = "";
 
     window.location.href = "student.html";
+    sessionStorage.setItem("usedPass", generatedPass); // mark password as used
+
   } else {
     // Shake animation for wrong password
     const input = document.getElementById("passwordInput");
