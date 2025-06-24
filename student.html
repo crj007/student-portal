@@ -9,6 +9,7 @@
   <div class="result-card">
     <h1 class="school-name">Cambridge International School Guwahati</h1>
     <h2>📄 Student Details</h2>
+    <p><strong>Roll No:</strong> <span id="roll"></span></p>
     <p><strong>Name:</strong> <span id="name"></span></p>
     <p><strong>Class:</strong> <span id="cls"></span></p>
 
@@ -31,12 +32,12 @@
       .then(res => res.json())
       .then(data => {
         const students = data[board][classSelected];
-
         const student = students.find(s =>
           s.username.toLowerCase() === username && s.roll === roll
         );
 
         if (student) {
+          document.getElementById("roll").textContent = student.roll;
           document.getElementById("name").textContent = student.fullname;
           document.getElementById("cls").textContent = `${board} - Class ${classSelected}`;
 
