@@ -11,6 +11,7 @@ function generatePassword() {
 
 function login() {
   const username = document.getElementById("username").value.trim();
+  sessionStorage.setItem("roll", document.getElementById("roll").value.trim());
   const classSelected = document.getElementById("class").value;
   const board = document.getElementById("board").value;
   const enteredPass = document.getElementById("passwordInput").value.trim();
