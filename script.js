@@ -13,16 +13,10 @@ function generatePassword() {
   const passwordDisplay = document.getElementById("generatedPassword");
   passwordDisplay.textContent = `Copy this password: ${generatedPass}`;
 
-  // Reset bounce animation
+  // Re-trigger animation
   passwordDisplay.classList.remove("bounce");
-  void passwordDisplay.offsetWidth; // trigger reflow
+  void passwordDisplay.offsetWidth;  // Force DOM reflow
   passwordDisplay.classList.add("bounce");
-
-  // Re-enable login button if previously disabled
-  const loginBtn = document.querySelector('.primary-btn');
-  loginBtn.disabled = false;
-  loginBtn.style.backgroundColor = "#1d9bf0";
-  loginBtn.style.cursor = "pointer";
 }
 
 
