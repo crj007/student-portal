@@ -10,13 +10,26 @@
   <div class="login-container">
     <h2>Student Login</h2>
     <input type="text" id="username" placeholder="Enter Username" />
+    
+    <select id="board">
+      <option value="">Select Board</option>
+      <option value="CBSE">CBSE</option>
+      <option value="IGCSE">IGCSE</option>
+    </select>
+
     <select id="class">
       <option value="">Select Class</option>
       <option value="9">Class 9</option>
       <option value="10">Class 10</option>
+      <option value="11">Class 11</option>
+      <option value="12">Class 12</option>
+      <option value="AS">AS Level</option>
+      <option value="A">A Level</option>
     </select>
+
     <button onclick="generatePassword()">Generate Password</button>
     <p id="generatedPassword"></p>
+
     <input type="text" id="passwordInput" placeholder="Paste the password here" />
     <button onclick="login()">Login</button>
   </div>
