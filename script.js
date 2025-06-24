@@ -11,7 +11,7 @@ function generatePassword() {
 
 function login() {
   const username = document.getElementById("username").value.trim();
-  sessionStorage.setItem("roll", document.getElementById("roll").value.trim());
+  const roll = document.getElementById("roll").value.trim();
   const classSelected = document.getElementById("class").value;
   const board = document.getElementById("board").value;
   const enteredPass = document.getElementById("passwordInput").value.trim();
@@ -21,15 +21,27 @@ function login() {
     return;
   }
 
+  // Check if the password is already used
+  if (sessionStorage.getItem("usedOnce") === "true") {
+    alert("This session password has already been used. Please reload the page and try again.");
+    return;
+  }
+
   if (enteredPass === generatedPass) {
     sessionStorage.setItem("username", username);
+    sessionStorage.setItem("roll", roll);
     sessionStorage.setItem("class", classSelected);
     sessionStorage.setItem("board", board);
+
+    // Mark password as used
+    sessionStorage.setItem("usedOnce", "true");
+
     window.location.href = "student.html";
   } else {
     alert("Incorrect password");
   }
 }
+
 function clearFields() {
   document.getElementById("roll").value = "";
   document.getElementById("username").value = "";
