@@ -1,10 +1,13 @@
-/* Fullscreen background for login */
+/* ---------------------------------------------
+   LOGIN PAGE STYLES (index.html)
+--------------------------------------------- */
 body.login-bg {
   margin: 0;
   padding: 0;
-  background-image: url('school_bg.jpg'); /* replace with your school background image file */
+  background-image: url('school_bg.png');  /* ✅ Use your image name */
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   height: 100vh;
   font-family: 'Segoe UI', sans-serif;
   display: flex;
@@ -12,8 +15,9 @@ body.login-bg {
   align-items: center;
 }
 
+/* Semi-transparent dark overlay for better visibility */
 .login-overlay {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.6); /* darker for white text contrast */
   padding: 2rem;
   border-radius: 12px;
   color: #fff;
@@ -26,20 +30,27 @@ body.login-bg {
 
 .login-card h2 {
   margin-bottom: 1rem;
-  color: #fff;
+  color: #ffffff;
 }
 
-input, select {
+input,
+select {
   width: 100%;
   padding: 10px;
   margin: 8px 0;
   border-radius: 6px;
   border: none;
   font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #000;
 }
 
 input::placeholder {
-  color: #999;
+  color: #444;
+}
+
+select {
+  color: #333;
 }
 
 button {
@@ -55,6 +66,7 @@ button {
 .primary-btn {
   background-color: #1d9bf0;
   color: white;
+  transition: background-color 0.3s ease;
 }
 
 .primary-btn:hover {
@@ -68,14 +80,18 @@ button {
   margin-top: 10px;
   border-radius: 6px;
   font-family: monospace;
+  word-break: break-all;
 }
 
-/* Result Page Styling */
+
+/* ---------------------------------------------
+   RESULT PAGE STYLES (student.html)
+--------------------------------------------- */
 body.result-bg {
   margin: 0;
   padding: 2rem;
   font-family: 'Segoe UI', sans-serif;
-  background: #f4f4f4;
+  background: #f0f4f9;
   display: flex;
   justify-content: center;
   align-items: flex-start;
