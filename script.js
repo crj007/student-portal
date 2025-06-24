@@ -7,13 +7,19 @@ function generatePassword() {
     generatedPass += chars.charAt(Math.floor(Math.random() * chars.length));
   }
 
-  // Save to sessionStorage
+  // Store password
   sessionStorage.setItem("generatedPass", generatedPass);
-  sessionStorage.removeItem("usedPass"); // reset previous use
+  sessionStorage.removeItem("usedPass");
 
-  document.getElementById("generatedPassword").textContent = `Copy this password: ${generatedPass}`;
-  
-  // Re-enable login button in case it was disabled before
+  const passwordDisplay = document.getElementById("generatedPassword");
+  passwordDisplay.textContent = `Copy this password: ${generatedPass}`;
+
+  // Reset and re-trigger animation
+  passwordDisplay.style.animation = "none";
+  void passwordDisplay.offsetWidth; // Trick to re-trigger animation
+  passwordDisplay.style.animation = "bounceIn 0.5s ease";
+
+  // Re-enable login
   const loginBtn = document.querySelector('.primary-btn');
   if (loginBtn) {
     loginBtn.disabled = false;
@@ -21,6 +27,7 @@ function generatePassword() {
     loginBtn.style.cursor = "pointer";
   }
 }
+
 
 function login() {
   const username = document.getElementById("username").value.trim();
