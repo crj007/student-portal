@@ -40,7 +40,7 @@
 
     const students = data[board][classSelected];
     const student = students.find(s =>
-      s.username.toLowerCase() === username && s.roll === roll
+       s.username.toLowerCase() === username && s.roll.toString() === roll.toString()
     );
 
     if (student) {
@@ -57,6 +57,9 @@
     } else {
       document.querySelector('.result-card').innerHTML = "<h3>No record found for this student.</h3>";
     }
+    console.log("Looking for:", username, roll, board, classSelected);
+    console.log("Student list:", students);
+
   });
 </script>
 
