@@ -2,7 +2,8 @@
   "CBSE": {
     "9": [
       {
-        "username": "Rahul",
+        "username": "rahul",
+        "fullname": "Rahul Sharma",
         "marks": {
           "Math": 85,
           "Science": 78,
@@ -10,30 +11,26 @@
         }
       },
       {
-        "username": "Sneha",
+        "username": "sneha",
+        "fullname": "Sneha Agarwal",
         "marks": {
           "Math": 92,
           "Science": 88,
           "English": 85
         }
       }
-    ],
-    "10": [],
-    "11": [],
-    "12": []
+    ]
   },
   "IGCSE": {
-    "9": [],
-    "10": [],
     "AS": [
       {
-        "username": "Aditya",
+        "username": "aditya",
+        "fullname": "Aditya Ranjan",
         "marks": {
           "Computer Science": 89,
           "Math": 93
         }
       }
-    ],
-    "A": []
+    ]
   }
 }
