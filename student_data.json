@@ -5,7 +5,7 @@
     "11": [],
     "12": []
   },
-  "IGCSE": 
+  "IGCSE": {
     "9": [
      { "roll": "1", "username": "anika", "fullname": "Anika Deori", "marks": { "Computer Science": 35 } },
      { "roll": "3", "username": "dikshita", "fullname": "Dikshita Borchetia", "marks": { "Computer Science": 40 } },
