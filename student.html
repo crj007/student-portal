@@ -22,40 +22,65 @@
     <ul id="marksList" class="marks-list"></ul>
   </div>
 
-  <script>
-    const username = sessionStorage.getItem("username")?.toLowerCase();
-    const roll = sessionStorage.getItem("roll");
-    const classSelected = sessionStorage.getItem("class");
-    const board = sessionStorage.getItem("board");
+ <script>
+  const username = sessionStorage.getItem("username")?.toLowerCase();
+  const roll = sessionStorage.getItem("roll");
+  const classSelected = sessionStorage.getItem("class");
+  const board = sessionStorage.getItem("board");
 
-    if (!username || !roll || !classSelected || !board) {
-      alert("Unauthorized access!");
-      window.location.href = "index.html";
-    }
+  if (!username || !roll || !classSelected || !board) {
+    alert("Unauthorized access!");
+    window.location.href = "index.html";
+  }
 
-    fetch("student_data.json")
-      .then(res => res.json())
-      .then(data => {
-        const students = data[board][classSelected];
-        const student = students.find(s =>
-          s.username.toLowerCase() === username && s.roll === roll
-        );
+  fetch('student_data.json')
+    .then(res => res.json())
+    .then(data => {
+      const students = data[board][classSelected];
+      const student = students.find(s =>
+        s.username.toLowerCase() === username && s.roll === roll
+      );
 
-        if (student) {
-          document.getElementById("roll").textContent = student.roll;
-          document.getElementById("name").textContent = student.fullname;
-          document.getElementById("cls").textContent = `${board} - Class ${classSelected}`;
+      if (student) {
+        document.getElementById("roll").textContent = student.roll;
+        document.getElementById("name").textContent = student.fullname;
+        document.getElementById("cls").textContent = `${board} - Class ${classSelected}`;
 
-          const ul = document.getElementById("marksList");
-          for (let subject in student.marks) {
-            let li = document.createElement("li");
-            li.innerHTML = `<span>${subject}</span><span>${student.marks[subject]} / 50</span>`;
-            ul.appendChild(li);
+        const ul = document.getElementById("marksList");
+        for (let subject in student.marks) {
+          const markEntry = student.marks[subject];
+
+          let li = document.createElement("li");
+
+          if (typeof markEntry === 'object' && markEntry.Theory !== undefined) {
+            // CBSE format
+            const theory = markEntry.Theory || 0;
+            const practical = markEntry.Practical || 0;
+            const total = theory + practical;
+
+            li.innerHTML = `
+              <div><strong>${subject}</strong></div>
+              <div style="font-size: 0.95rem;">
+                Theory: ${theory} / 40<br>
+                Practical: ${practical} / 10<br>
+                <strong>Total: ${total} / 50</strong>
+              </div>
+            `;
+          } else {
+            // IGCSE format
+            li.innerHTML = `
+              <span>${subject}</span>
+              <span>${markEntry} / 50</span>
+            `;
           }
-        } else {
-          document.querySelector(".result-card").innerHTML = "<h3>No record found</h3>";
+
+          ul.appendChild(li);
         }
-      });
-  </script>
+      } else {
+        document.querySelector('.result-card').innerHTML = "<h3>No record found</h3>";
+      }
+    });
+</script>
+
 </body>
 </html>
