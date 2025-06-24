@@ -7,17 +7,23 @@ function generatePassword() {
     generatedPass += chars.charAt(Math.floor(Math.random() * chars.length));
   }
 
-  const display = document.getElementById("generatedPassword");
-  display.textContent = `Copy this password: ${generatedPass}`;
+  // Save to sessionStorage
+  sessionStorage.setItem("generatedPass", generatedPass);
+  sessionStorage.removeItem("usedPass"); // reset previous use
 
-  // Add bounce animation
-  display.classList.remove("password-bounce");
-  void display.offsetWidth; // trigger reflow
-  display.classList.add("password-bounce");
+  document.getElementById("generatedPassword").textContent = `Copy this password: ${generatedPass}`;
+  
+  // Re-enable login button in case it was disabled before
+  const loginBtn = document.querySelector('.primary-btn');
+  if (loginBtn) {
+    loginBtn.disabled = false;
+    loginBtn.style.backgroundColor = "#1d9bf0";
+    loginBtn.style.cursor = "pointer";
+  }
 }
 
 function login() {
-  const username = document.getElementById("username").value.trim().toLowerCase();
+  const username = document.getElementById("username").value.trim();
   const roll = document.getElementById("roll").value.trim();
   const classSelected = document.getElementById("class").value;
   const board = document.getElementById("board").value;
@@ -28,25 +34,19 @@ function login() {
     return;
   }
 
-  if (enteredPass === generatedPass) {
+  const storedPass = sessionStorage.getItem("generatedPass");
+  const usedOnce = sessionStorage.getItem("usedPass");
+
+  if (enteredPass === storedPass && !usedOnce) {
+    sessionStorage.setItem("usedPass", enteredPass);
     sessionStorage.setItem("username", username);
     sessionStorage.setItem("roll", roll);
     sessionStorage.setItem("class", classSelected);
     sessionStorage.setItem("board", board);
-
-    // Invalidate password so it can't be reused
-    generatedPass = "";
-
     window.location.href = "student.html";
-    sessionStorage.setItem("usedPass", generatedPass); // mark password as used
-
+  } else if (usedOnce) {
+    alert("❌ This password has already been used. Please generate a new one.");
   } else {
-    // Shake animation for wrong password
-    const input = document.getElementById("passwordInput");
-    input.classList.remove("shake");
-    void input.offsetWidth;
-    input.classList.add("shake");
-
     alert("Incorrect password");
   }
 }
@@ -58,5 +58,4 @@ function clearFields() {
   document.getElementById("board").value = "";
   document.getElementById("passwordInput").value = "";
   document.getElementById("generatedPassword").textContent = "";
-  generatedPass = "";
 }
