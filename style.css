@@ -65,11 +65,15 @@ input::placeholder {
   background-color: #fff;
   color: #000;
   padding: 8px;
+  margin-top: 10px;
   border-radius: 6px;
   font-family: monospace;
-  margin-top: 10px;
+  display: block;
+  width: 100%;  /* ✅ Full width */
+  box-sizing: border-box;
   text-align: center;
 }
+
 
 .button-row {
   display: flex;
