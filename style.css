@@ -125,6 +125,16 @@ body.result-bg {
   margin-bottom: 0.5rem;
 }
 
+.assessment-title {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #1d3557;
+  font-weight: bold;
+letter-spacing: 0.5px;
+  margin: 0.5rem 0 1rem 0;
+}
+
+
 h2 {
   margin-top: 0.5rem;
   color: #222;
