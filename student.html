@@ -16,39 +16,40 @@
     <ul id="marksList" class="marks-list"></ul>
   </div>
 
- <script>
-  const username = sessionStorage.getItem("username").toLowerCase();
-  const classSelected = sessionStorage.getItem("class");
-  const board = sessionStorage.getItem("board");
+  <script>
+    const username = sessionStorage.getItem("username")?.toLowerCase();
+    const roll = sessionStorage.getItem("roll");
+    const classSelected = sessionStorage.getItem("class");
+    const board = sessionStorage.getItem("board");
 
-  if (!username || !classSelected || !board) {
-    alert("Unauthorized access!");
-    window.location.href = "index.html";
-  }
+    if (!username || !roll || !classSelected || !board) {
+      alert("Unauthorized access!");
+      window.location.href = "index.html";
+    }
 
-  fetch('student_data.json')
-    .then(res => res.json())
-    .then(data => {
-      const students = data[board][classSelected];
+    fetch('student_data.json')
+      .then(res => res.json())
+      .then(data => {
+        const students = data[board][classSelected];
 
-      // Case-insensitive match
-      const student = students.find(s => s.username.toLowerCase() === username);
+        const student = students.find(s =>
+          s.username.toLowerCase() === username && s.roll === roll
+        );
 
-      if (student) {
-        document.getElementById("name").textContent = student.fullname;
-        document.getElementById("cls").textContent = `${board} - Class ${classSelected}`;
+        if (student) {
+          document.getElementById("name").textContent = student.fullname;
+          document.getElementById("cls").textContent = `${board} - Class ${classSelected}`;
 
-        const ul = document.getElementById("marksList");
-        for (let subject in student.marks) {
-          let li = document.createElement("li");
-          li.textContent = `${subject}: ${student.marks[subject]}`;
-          ul.appendChild(li);
+          const ul = document.getElementById("marksList");
+          for (let subject in student.marks) {
+            let li = document.createElement("li");
+            li.textContent = `${subject}: ${student.marks[subject]}`;
+            ul.appendChild(li);
+          }
+        } else {
+          document.querySelector('.result-card').innerHTML = "<h3>No record found</h3>";
         }
-      } else {
-        document.querySelector('.result-card').innerHTML = "<h3>No record found</h3>";
-      }
-    });
-</script>
-
+      });
+  </script>
 </body>
 </html>
