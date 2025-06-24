@@ -5,8 +5,9 @@
   <title>Student Results</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="modern-bg">
-  <div class="glass-card">
+<body class="result-bg">
+  <div class="result-card">
+    <h1 class="school-name">Cambridge International School Guwahati</h1>
     <h2>📄 Student Details</h2>
     <p><strong>Name:</strong> <span id="name"></span></p>
     <p><strong>Class:</strong> <span id="cls"></span></p>
@@ -15,36 +16,39 @@
     <ul id="marksList" class="marks-list"></ul>
   </div>
 
-  <script>
-    const username = sessionStorage.getItem("username");
-    const classSelected = sessionStorage.getItem("class");
-    const board = sessionStorage.getItem("board");
+ <script>
+  const username = sessionStorage.getItem("username").toLowerCase();
+  const classSelected = sessionStorage.getItem("class");
+  const board = sessionStorage.getItem("board");
 
-    if (!username || !classSelected || !board) {
-      alert("Unauthorized access!");
-      window.location.href = "index.html";
-    }
+  if (!username || !classSelected || !board) {
+    alert("Unauthorized access!");
+    window.location.href = "index.html";
+  }
 
-    document.getElementById("name").textContent = username;
-    document.getElementById("cls").textContent = `${board} - Class ${classSelected}`;
+  fetch('student_data.json')
+    .then(res => res.json())
+    .then(data => {
+      const students = data[board][classSelected];
 
-    fetch('student_data.json')
-      .then(res => res.json())
-      .then(data => {
-        const students = data[board][classSelected];
-        const student = students.find(s => s.username === username);
+      // Case-insensitive match
+      const student = students.find(s => s.username.toLowerCase() === username);
 
-        if (student) {
-          const ul = document.getElementById("marksList");
-          for (let subject in student.marks) {
-            let li = document.createElement("li");
-            li.textContent = `${subject}: ${student.marks[subject]}`;
-            ul.appendChild(li);
-          }
-        } else {
-          document.querySelector('.glass-card').innerHTML = "<h3>No record found</h3>";
+      if (student) {
+        document.getElementById("name").textContent = student.fullname;
+        document.getElementById("cls").textContent = `${board} - Class ${classSelected}`;
+
+        const ul = document.getElementById("marksList");
+        for (let subject in student.marks) {
+          let li = document.createElement("li");
+          li.textContent = `${subject}: ${student.marks[subject]}`;
+          ul.appendChild(li);
         }
-      });
-  </script>
+      } else {
+        document.querySelector('.result-card').innerHTML = "<h3>No record found</h3>";
+      }
+    });
+</script>
+
 </body>
 </html>
