@@ -194,8 +194,88 @@ h2 {
   h2, h3 {
     font-size: 1.1rem;
   }
+  /* ==== Animations ==== */
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  0% { opacity: 0; transform: translateX(-30px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Apply to login card and result card */
+.login-card, .result-card {
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Animate form fields */
+input, select {
+  animation: slideIn 0.6s ease-out;
+}
+
+/* Animate marks list items */
+.marks-list li {
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+/* Delay each list item for a nice staggered reveal */
+.marks-list li:nth-child(1) { animation-delay: 0.2s; }
+.marks-list li:nth-child(2) { animation-delay: 0.4s; }
+.marks-list li:nth-child(3) { animation-delay: 0.6s; }
+.marks-list li:nth-child(4) { animation-delay: 0.8s; }
+/* Add more if needed or use JS for dynamic delay */
+
 
   .marks-list li {
     font-size: 0.95rem;
   }
 }
+
+/* ==== Animations ==== */
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  0% { opacity: 0; transform: translateX(-30px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-10px); }
+  50% { transform: translateY(5px); }
+  75% { transform: translateY(-4px); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+/* Apply animations */
+.login-card, .result-card {
+  animation: fadeIn 0.8s ease-out;
+}
+
+input, select {
+  animation: slideIn 0.6s ease-out;
+}
+
+/* Password bounce effect */
+.password-bounce {
+  animation: bounce 0.6s ease;
+}
+
+/* Shake error animation */
+.shake {
+  animation: shake 0.5s ease;
+}
+
