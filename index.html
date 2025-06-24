@@ -1,8 +1,4 @@
-<script>
-  window.onload = () => {
-    sessionStorage.removeItem("usedOnce");
-  };
-</script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,10 +45,6 @@
  <script src="script.js"></script>
 <script>
   window.onload = () => {
-    // Clear the flag so password can't be reused on refresh
-    sessionStorage.removeItem("usedOnce");
-
-    // Show expired password message if needed
     const passwordDisplay = document.getElementById("generatedPassword");
     const storedPass = sessionStorage.getItem("usedPass");
 
@@ -60,7 +52,6 @@
       passwordDisplay.textContent = "❌ This password has expired. Please generate a new one.";
     }
 
-    // Disable login button if password is expired
     const loginBtn = document.querySelector('.primary-btn');
     if (storedPass && loginBtn) {
       loginBtn.disabled = true;
@@ -69,6 +60,7 @@
     }
   };
 </script>
+
    
 </body>
 </html>
