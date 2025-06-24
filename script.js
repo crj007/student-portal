@@ -7,26 +7,24 @@ function generatePassword() {
     generatedPass += chars.charAt(Math.floor(Math.random() * chars.length));
   }
 
-  // Store password
   sessionStorage.setItem("generatedPass", generatedPass);
   sessionStorage.removeItem("usedPass");
 
   const passwordDisplay = document.getElementById("generatedPassword");
   passwordDisplay.textContent = `Copy this password: ${generatedPass}`;
 
-  // Reset and re-trigger animation
-  passwordDisplay.style.animation = "none";
-  void passwordDisplay.offsetWidth; // Trick to re-trigger animation
-  passwordDisplay.style.animation = "bounceIn 0.5s ease";
+  // Reset bounce animation
+  passwordDisplay.classList.remove("bounce");
+  void passwordDisplay.offsetWidth; // trigger reflow
+  passwordDisplay.classList.add("bounce");
 
-  // Re-enable login
+  // Re-enable login button if previously disabled
   const loginBtn = document.querySelector('.primary-btn');
-  if (loginBtn) {
-    loginBtn.disabled = false;
-    loginBtn.style.backgroundColor = "#1d9bf0";
-    loginBtn.style.cursor = "pointer";
-  }
+  loginBtn.disabled = false;
+  loginBtn.style.backgroundColor = "#1d9bf0";
+  loginBtn.style.cursor = "pointer";
 }
+
 
 
 function login() {
