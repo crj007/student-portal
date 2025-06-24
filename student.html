@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Details</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="student-details">
+    <h2>Welcome, <span id="name"></span></h2>
+    <p>Class: <span id="cls"></span></p>
+    <h3>Marks Scored:</h3>
+    <ul id="marksList"></ul>
+  </div>
+
+  <script>
+    const username = sessionStorage.getItem("username");
+    const classSelected = sessionStorage.getItem("class");
+    const board = sessionStorage.getItem("board");
+
+    if (!username || !classSelected || !board) {
+      alert("Unauthorized access!");
+      window.location.href = "index.html";
+    }
+
+    document.getElementById("name").textContent = username;
+    document.getElementById("cls").textContent = `${board} - Class ${classSelected}`;
+
+    fetch('student_data.json')
+      .then(res => res.json())
+      .then(data => {
+        const students = data[board][classSelected];
+        const student = students.find(s => s.username === username);
+
+        if (student) {
+          const ul = document.getElementById("marksList");
+          for (let subject in student.marks) {
+            let li = document.createElement("li");
+            li.textContent = `${subject}: ${student.marks[subject]}`;
+            ul.appendChild(li);
+          }
+        } else {
+          document.querySelector('.student-details').innerHTML = "<h3>No record found</h3>";
+        }
+      });
+  </script>
+</body>
+</html>
