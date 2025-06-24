@@ -1,6 +1,10 @@
 {
   "CBSE": {
-    "9": [],
+    "9": [
+     { "roll": "1", "username": "anika", "fullname": "Anika Deori", "marks": { "Computer Science": {"Theory": 36, "Practical": 9} } }
+
+      
+    ],
     "10": [],
     "11": [],
     "12": []
