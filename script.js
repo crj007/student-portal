@@ -10,19 +10,20 @@ function generatePassword() {
 }
 
 function login() {
-  const enteredPass = document.getElementById("passwordInput").value.trim();
   const username = document.getElementById("username").value.trim();
   const classSelected = document.getElementById("class").value;
+  const board = document.getElementById("board").value;
+  const enteredPass = document.getElementById("passwordInput").value.trim();
 
-  if (!username || !classSelected || !enteredPass) {
+  if (!username || !classSelected || !board || !enteredPass) {
     alert("Please fill all fields");
     return;
   }
 
   if (enteredPass === generatedPass) {
-    // Store user details in sessionStorage
     sessionStorage.setItem("username", username);
     sessionStorage.setItem("class", classSelected);
+    sessionStorage.setItem("board", board);
     window.location.href = "student.html";
   } else {
     alert("Incorrect password");
