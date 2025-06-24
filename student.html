@@ -2,15 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Student Details</title>
+  <title>Student Results</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="student-details">
-    <h2>Welcome, <span id="name"></span></h2>
-    <p>Class: <span id="cls"></span></p>
-    <h3>Marks Scored:</h3>
-    <ul id="marksList"></ul>
+<body class="modern-bg">
+  <div class="glass-card">
+    <h2>📄 Student Details</h2>
+    <p><strong>Name:</strong> <span id="name"></span></p>
+    <p><strong>Class:</strong> <span id="cls"></span></p>
+
+    <h3>📊 Marks Scored:</h3>
+    <ul id="marksList" class="marks-list"></ul>
   </div>
 
   <script>
@@ -40,7 +42,7 @@
             ul.appendChild(li);
           }
         } else {
-          document.querySelector('.student-details').innerHTML = "<h3>No record found</h3>";
+          document.querySelector('.glass-card').innerHTML = "<h3>No record found</h3>";
         }
       });
   </script>
