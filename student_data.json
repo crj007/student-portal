@@ -8,71 +8,19 @@
   "IGCSE": {
     "9": [],
     "10": [
-      {
-        "username": "aayush",
-        "fullname": "Aayush Dhirasaria",
-        "marks": { "Computer Science": 47 }
-      },
-      {
-        "username": "arham",
-        "fullname": "Arham Zulfiqar",
-        "marks": { "Computer Science": 39 }
-      },
-      {
-        "username": "aryan",
-        "fullname": "Aryan Agarwalla",
-        "marks": { "Computer Science": 49 }
-      },
-      {
-        "username": "avikshit",
-        "fullname": "Avikshit Aditya",
-        "marks": { "Computer Science": 40 }
-      },
-      {
-        "username": "ayush",
-        "fullname": "Ayush Roy",
-        "marks": { "Computer Science": 48 }
-      },
-      {
-        "username": "jugaad",
-        "fullname": "Jugaad Singh",
-        "marks": { "Computer Science": 46 }
-      },
-      {
-        "username": "krishna",
-        "fullname": "Krishna Periwal",
-        "marks": { "Computer Science": 47 }
-      },
-      {
-        "username": "partha",
-        "fullname": "Partha P Sharma",
-        "marks": { "Computer Science": 36 }
-      },
-      {
-        "username": "prapti",
-        "fullname": "Prapti Neog",
-        "marks": { "Computer Science": 39 }
-      },
-      {
-        "username": "saikripa",
-        "fullname": "SaiKripa Roy",
-        "marks": { "Computer Science": 48 }
-      },
-      {
-        "username": "samriddhi",
-        "fullname": "Samriddhi Krori",
-        "marks": { "Computer Science": 44 }
-      },
-      {
-        "username": "sanskriti",
-        "fullname": "Sanskriti Dee Oleyman",
-        "marks": { "Computer Science": 36 }
-      },
-      {
-        "username": "yash",
-        "fullname": "Yash Munot",
-        "marks": { "Computer Science": 34 }
-      }
+      { "roll": "1", "username": "aayush", "fullname": "Aayush Dhirasaria", "marks": { "Computer Science": 47 } },
+      { "roll": "2", "username": "arham", "fullname": "Arham Zulfiqar", "marks": { "Computer Science": 39 } },
+      { "roll": "3", "username": "aryan", "fullname": "Aryan Agarwalla", "marks": { "Computer Science": 49 } },
+      { "roll": "6", "username": "avikshit", "fullname": "Avikshit Aditya", "marks": { "Computer Science": 40 } },
+      { "roll": "4", "username": "ayush", "fullname": "Ayush Roy", "marks": { "Computer Science": 48 } },
+      { "roll": "10", "username": "jugaad", "fullname": "Jugaad Singh", "marks": { "Computer Science": 46 } },
+      { "roll": "11", "username": "krishna", "fullname": "Krishna Periwal", "marks": { "Computer Science": 47 } },
+      { "roll": "13", "username": "partha", "fullname": "Partha P Sharma", "marks": { "Computer Science": 36 } },
+      { "roll": "14", "username": "prapti", "fullname": "Prapti Neog", "marks": { "Computer Science": 39 } },
+      { "roll": "17", "username": "saikripa", "fullname": "SaiKripa Roy", "marks": { "Computer Science": 48 } },
+      { "roll": "18", "username": "samriddhi", "fullname": "Samriddhi Krori", "marks": { "Computer Science": 44 } },
+      { "roll": "20", "username": "sanskriti", "fullname": "Sanskriti Dee Oleyman", "marks": { "Computer Science": 36 } },
+      { "roll": "22", "username": "yash", "fullname": "Yash Munot", "marks": { "Computer Science": 34 } }
     ],
     "AS": [],
     "A": []
