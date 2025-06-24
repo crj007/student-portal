@@ -7,7 +7,7 @@
 </head>
 <body class="result-bg">
   <div class="result-card">
-     <img src="logo.jpg" alt="School Logo" class="school-logo" />
+    <img src="logo.jpg" alt="School Logo" class="school-logo" />
     <h1 class="school-name">Cambridge International School Guwahati</h1>
     <h2>📄 Student Details</h2>
     <p><strong>Roll No:</strong> <span id="roll"></span></p>
@@ -19,49 +19,62 @@
   </div>
 
   <script>
-  const username = sessionStorage.getItem("username")?.toLowerCase();
-  const roll = sessionStorage.getItem("roll");
-  const classSelected = sessionStorage.getItem("class");
-  const board = sessionStorage.getItem("board");
+    const username = sessionStorage.getItem("username")?.toLowerCase().trim();
+    const roll = sessionStorage.getItem("roll")?.trim();
+    const classSelected = sessionStorage.getItem("class");
+    const board = sessionStorage.getItem("board");
 
-  if (!username || !roll || !classSelected || !board) {
-    alert("Unauthorized access!");
-    window.location.href = "index.html";
-    return;
-  }
-
- fetch('student_data.json')
-  .then(res => res.json())
-  .then(data => {
-    if (!data[board] || !data[board][classSelected]) {
-      document.querySelector('.result-card').innerHTML = "<h3>No data found for selected board/class.</h3>";
-      return;
+    // Check for session validity
+    if (!username || !roll || !classSelected || !board) {
+      alert("Unauthorized access! Please login again.");
+      window.location.href = "index.html";
     }
 
-    const students = data[board][classSelected];
-    const student = students.find(s =>
-       s.username.toLowerCase() === username && s.roll.toString() === roll.toString()
-    );
+    // Load data and match student
+    fetch('student_data.json')
+      .then(res => res.json())
+      .then(data => {
+        const students = data[board]?.[classSelected];
 
-    if (student) {
-      document.getElementById("roll").textContent = student.roll;
-      document.getElementById("name").textContent = student.fullname;
-      document.getElementById("cls").textContent = `${board} - ${classSelected === 'AS' || classSelected === 'A' ? 'Level' : 'Class'} ${classSelected}`;
+        // Debug logs for testing
+        console.log("Board:", board);
+        console.log("Class:", classSelected);
+        console.log("Username:", username);
+        console.log("Roll:", roll);
+        console.log("Student List:", students);
 
-      const ul = document.getElementById("marksList");
-      for (let subject in student.marks) {
-        let li = document.createElement("li");
-        li.textContent = `${subject}: ${student.marks[subject]}`;
-        ul.appendChild(li);
-      }
-    } else {
-      document.querySelector('.result-card').innerHTML = "<h3>No record found for this student.</h3>";
-    }
-    console.log("Looking for:", username, roll, board, classSelected);
-    console.log("Student list:", students);
+        if (!students) {
+          document.querySelector('.result-card').innerHTML = "<h3>No data found for selected board/class.</h3>";
+          return;
+        }
 
-  });
-</script>
+        const student = students.find(s =>
+          s.username.toLowerCase().trim() === username &&
+          s.roll.toString().trim() === roll
+        );
 
+        console.log("Matched student:", student);
+
+        if (student) {
+          document.getElementById("roll").textContent = student.roll;
+          document.getElementById("name").textContent = student.fullname;
+          document.getElementById("cls").textContent =
+            `${board} - ${["AS", "A"].includes(classSelected) ? "Level" : "Class"} ${classSelected}`;
+
+          const ul = document.getElementById("marksList");
+          for (let subject in student.marks) {
+            const li = document.createElement("li");
+            li.textContent = `${subject}: ${student.marks[subject]}`;
+            ul.appendChild(li);
+          }
+        } else {
+          document.querySelector('.result-card').innerHTML = "<h3>No record found for this student.</h3>";
+        }
+      })
+      .catch(err => {
+        console.error("Error loading student data:", err);
+        document.querySelector('.result-card').innerHTML = "<h3>Error loading data.</h3>";
+      });
+  </script>
 </body>
 </html>
