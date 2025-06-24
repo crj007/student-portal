@@ -1,0 +1,39 @@
+{
+  "CBSE": {
+    "9": [
+      {
+        "username": "Rahul",
+        "marks": {
+          "Math": 85,
+          "Science": 78,
+          "English": 90
+        }
+      },
+      {
+        "username": "Sneha",
+        "marks": {
+          "Math": 92,
+          "Science": 88,
+          "English": 85
+        }
+      }
+    ],
+    "10": [],
+    "11": [],
+    "12": []
+  },
+  "IGCSE": {
+    "9": [],
+    "10": [],
+    "AS": [
+      {
+        "username": "Aditya",
+        "marks": {
+          "Computer Science": 89,
+          "Math": 93
+        }
+      }
+    ],
+    "A": []
+  }
+}
