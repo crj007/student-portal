@@ -30,34 +30,34 @@
     return;
   }
 
-  fetch('student_data.json')
-    .then(res => res.json())
-    .then(data => {
-      if (!data[board] || !data[board][classSelected]) {
-        document.querySelector('.result-card').innerHTML = "<h3>No data found for selected board/class.</h3>";
-        return;
+ fetch('student_data.json')
+  .then(res => res.json())
+  .then(data => {
+    if (!data[board] || !data[board][classSelected]) {
+      document.querySelector('.result-card').innerHTML = "<h3>No data found for selected board/class.</h3>";
+      return;
+    }
+
+    const students = data[board][classSelected];
+    const student = students.find(s =>
+      s.username.toLowerCase() === username && s.roll === roll
+    );
+
+    if (student) {
+      document.getElementById("roll").textContent = student.roll;
+      document.getElementById("name").textContent = student.fullname;
+      document.getElementById("cls").textContent = `${board} - ${classSelected === 'AS' || classSelected === 'A' ? 'Level' : 'Class'} ${classSelected}`;
+
+      const ul = document.getElementById("marksList");
+      for (let subject in student.marks) {
+        let li = document.createElement("li");
+        li.textContent = `${subject}: ${student.marks[subject]}`;
+        ul.appendChild(li);
       }
-
-      const students = data[board][classSelected];
-      const student = students.find(s =>
-        s.username.toLowerCase() === username && s.roll === roll
-      );
-
-      if (student) {
-        document.getElementById("roll").textContent = student.roll;
-        document.getElementById("name").textContent = student.fullname;
-        document.getElementById("cls").textContent = `${board} - ${classSelected === 'AS' || classSelected === 'A' ? 'Level' : 'Class'} ${classSelected}`;
-
-        const ul = document.getElementById("marksList");
-        for (let subject in student.marks) {
-          let li = document.createElement("li");
-          li.textContent = `${subject}: ${student.marks[subject]}`;
-          ul.appendChild(li);
-        }
-      } else {
-        document.querySelector('.result-card').innerHTML = "<h3>No record found for this student.</h3>";
-      }
-    });
+    } else {
+      document.querySelector('.result-card').innerHTML = "<h3>No record found for this student.</h3>";
+    }
+  });
 </script>
 
 </body>
