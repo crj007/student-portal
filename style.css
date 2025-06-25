@@ -139,7 +139,7 @@ body.result-bg {
 }
 
 .school-logo {
-  width: 120px;        /* Increase width */
+  width: 160px;        /* Increase width */
   height: auto;
   display: block;
   margin: 0 auto 10px;
@@ -225,7 +225,7 @@ p {
   }
 
   .school-logo {
-    width: 80px;
+    width: 100px;
   }
 
   .school-name {
