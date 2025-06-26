@@ -52,12 +52,7 @@
       passwordDisplay.textContent = "❌ This password has expired. Please generate a new one.";
     }
 
-    const loginBtn = document.querySelector('.primary-btn');
-    if (storedPass && loginBtn) {
-      loginBtn.disabled = true;
-      loginBtn.style.backgroundColor = '#888';
-      loginBtn.style.cursor = 'not-allowed';
-    }
+    
   };
 </script>
 
