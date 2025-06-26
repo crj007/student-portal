@@ -32,7 +32,9 @@
       
     ],
     "11": [],
-    "12": []
+    "12": [
+          { "roll": "5", "username": "ariyan", "fullname": "Ariyan Kashif Rahman", "marks": { "Informatics Practices": {"Theory": 17, "Practical": 8} } }
+    ]
   },
   "IGCSE": {
     "9": [
