@@ -17,18 +17,18 @@
       
     ],
     "10": [
-        { "roll": "1", "username": "aarav", "fullname": "Aarav Gupta", "marks": { "Information Technology": {"Theory": 33, "Practical": 10} } },
-        { "roll": "2", "username": "aditya", "fullname": "Aditya Chetri", "marks": { "Information Technology": {"Theory": 29.5, "Practical": 8} } },
-        { "roll": "4", "username": "ashmit", "fullname": "Ashmit Pathak", "marks": { "Information Technology": {"Theory": 31.5, "Practical": 10} } },
-        { "roll": "5", "username": "debansh", "fullname": "Debansh Gohain", "marks": { "Information Technology": {"Theory": 28, "Practical": 6} } },
-        { "roll": "6", "username": "kaustav", "fullname": "Kaustav N Choudhury", "marks": { "Information Technology": {"Theory": 34, "Practical": 10} } },
-        { "roll": "7", "username": "manaswi", "fullname": "Manaswi Behera", "marks": { "Information Technology": {"Theory": 35, "Practical": 10} } },
-        { "roll": "8", "username": "mudit", "fullname": "Mudit Maloo", "marks": { "Information Technology": {"Theory": 35, "Practical": 10} } },
-        { "roll": "9", "username": "prabita", "fullname": "Prabita Newar", "marks": { "Information Technology": {"Theory": 33, "Practical": 10} } },
-        { "roll": "10", "username": "tania", "fullname": "Tania Mozumdar", "marks": { "Information Technology": {"Theory": 37, "Practical": 10} } },
-        { "roll": "11", "username": "sushanta", "fullname": "Sushanta Das", "marks": { "Information Technology": {"Theory": 33.5, "Practical": 10} } },
-        { "roll": "12", "username": "wakid", "fullname": "Wakid Hussain", "marks": { "Information Technology": {"Theory": 35.5, "Practical": 10} } },
-        { "roll": "13", "username": "yeshwant", "fullname": "Yeshwant Srivastava", "marks": { "Information Technology": {"Theory": 34, "Practical": 10} } }
+        { "roll": "1", "username": "aarav", "fullname": "Aarav Gupta", "marks": { "Information Technology": {"Theory": 38.5, "Practical": 26} } },
+        { "roll": "2", "username": "aditya", "fullname": "Aditya Chetri", "marks": { "Information Technology": {"Theory": 30.5, "Practical": 20} } },
+        { "roll": "4", "username": "ashmit", "fullname": "Ashmit Pathak", "marks": { "Information Technology": {"Theory": 29.5, "Practical": 27} } },
+        { "roll": "5", "username": "debansh", "fullname": "Debansh Gohain", "marks": { "Information Technology": {"Theory": 22, "Practical": 15} } },
+        { "roll": "6", "username": "kaustav", "fullname": "Kaustav N Choudhury", "marks": { "Information Technology": {"Theory": 40.5, "Practical": 22} } },
+        { "roll": "7", "username": "manaswi", "fullname": "Manaswi Behera", "marks": { "Information Technology": {"Theory": 40.5, "Practical": 28} } },
+        { "roll": "8", "username": "mudit", "fullname": "Mudit Maloo", "marks": { "Information Technology": {"Theory": 40, "Practical": 27} } },
+        { "roll": "9", "username": "prabita", "fullname": "Prabita Newar", "marks": { "Information Technology": {"Theory": 43, "Practical": 29} } },
+        { "roll": "10", "username": "tania", "fullname": "Tania Mozumdar", "marks": { "Information Technology": {"Theory": 42, "Practical": 30} } },
+        { "roll": "11", "username": "sushanta", "fullname": "Sushanta Das", "marks": { "Information Technology": {"Theory": 35.5, "Practical": 26} } },
+        { "roll": "12", "username": "wakid", "fullname": "Wakid Hussain", "marks": { "Information Technology": {"Theory": 36, "Practical": 21} } },
+        { "roll": "13", "username": "yeshwant", "fullname": "Yeshwant Srivastava", "marks": { "Information Technology": {"Theory": 38.5, "Practical": 27} } }
       
     ],
     "11": [],
