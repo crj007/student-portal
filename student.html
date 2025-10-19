@@ -22,7 +22,7 @@
     <ul id="marksList" class="marks-list"></ul>
   </div>
 
- <script>
+<script>
   const username = sessionStorage.getItem("username")?.toLowerCase();
   const roll = sessionStorage.getItem("roll");
   const classSelected = sessionStorage.getItem("class");
@@ -31,6 +31,18 @@
   if (!username || !roll || !classSelected || !board) {
     alert("Unauthorized access!");
     window.location.href = "index.html";
+  }
+
+  // Function to get max marks based on board & class
+  function getMaxMarks(board, cls) {
+    if (board === "CBSE") {
+      if (cls === "9" || cls === "10") return { theory: 50, practical: 30, total: 80 };
+      if (cls === "11") return { theory: 60, practical: 20, total: 80 };
+      if (cls === "12") return { theory: 70, practical: 30, total: 100 };
+    } else if (board === "IGCSE") {
+      if (cls === "9" || cls === "10") return { total: 100 };
+    }
+    return { total: 0 }; // default fallback
   }
 
   fetch('student_data.json')
@@ -47,13 +59,14 @@
         document.getElementById("cls").textContent = `${board} - Class ${classSelected}`;
 
         const ul = document.getElementById("marksList");
+        const maxMarks = getMaxMarks(board, classSelected);
+
         for (let subject in student.marks) {
           const markEntry = student.marks[subject];
-
           let li = document.createElement("li");
 
-          if (typeof markEntry === 'object' && markEntry.Theory !== undefined) {
-            // CBSE format
+          if (board === "CBSE") {
+            // CBSE format: separate Theory & Practical
             const theory = markEntry.Theory || 0;
             const practical = markEntry.Practical || 0;
             const total = theory + practical;
@@ -61,16 +74,16 @@
             li.innerHTML = `
               <div><strong>${subject}</strong></div>
               <div style="font-size: 0.95rem;">
-                Theory: ${theory} / 40<br>
-                Practical: ${practical} / 10<br>
-                <strong>Total: ${total} / 50</strong>
+                Theory: ${theory} / ${maxMarks.theory}<br>
+                Practical: ${practical} / ${maxMarks.practical}<br>
+                <strong>Total: ${total} / ${maxMarks.total}</strong>
               </div>
             `;
           } else {
-            // IGCSE format
+            // IGCSE format: single total mark
             li.innerHTML = `
               <span>${subject}</span>
-              <span>${markEntry} / 50</span>
+              <span>${markEntry} / ${maxMarks.total}</span>
             `;
           }
 
@@ -81,6 +94,7 @@
       }
     });
 </script>
+
 
 </body>
 </html>
