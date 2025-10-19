@@ -1,19 +1,19 @@
 {
   "CBSE": {
     "9": [
-     { "roll": "1", "username": "ananya", "fullname": "Ananya Ranjan", "marks": { "Information Technology": {"Theory": 39, "Practical": 10} } },
-       { "roll": "2", "username": "ipshita", "fullname": "Ipshita Kalita", "marks": { "Information Technology": {"Theory": 31.5, "Practical": 10} } },
-       { "roll": "3", "username": "ismail", "fullname": "Ismail Gani Choudhury", "marks": { "Information Technology": {"Theory": 30, "Practical": 9} } },
-       { "roll": "4", "username": "jash", "fullname": "Jash S Rehal", "marks": { "Information Technology": {"Theory": 25, "Practical": 10} } },
-       { "roll": "5", "username": "manveer", "fullname": "Manveer Singh Khatkar", "marks": { "Information Technology": {"Theory": 31, "Practical": 10} } },
-       { "roll": "6", "username": "mohit", "fullname": "Mohit Sharma", "marks": { "Information Technology": {"Theory": 11, "Practical": 9} } },
-       { "roll": "7", "username": "nimirisha", "fullname": "Nimirisha G Marak", "marks": { "Information Technology": {"Theory": 17, "Practical": 10} } },
-       { "roll": "8", "username": "palashdeep", "fullname": "Palashdeep Kalita", "marks": { "Information Technology": {"Theory": 20.5, "Practical": 9} } },
-       { "roll": "9", "username": "rohan", "fullname": "Rohan Deori", "marks": { "Information Technology": {"Theory": 21, "Practical": 9} } },
-       { "roll": "10", "username": "sagnik", "fullname": "Sagnik Sarkar", "marks": { "Information Technology": {"Theory": 33, "Practical": 10} } },
-       { "roll": "11", "username": "swadesh", "fullname": "Swadesh Pratik Rabha", "marks": { "Information Technology": {"Theory": 35, "Practical": 10} } },
-       { "roll": "12", "username": "yashika", "fullname": "Yashika Munot", "marks": { "Information Technology": {"Theory": 32, "Practical": 10} } },
-       { "roll": "13", "username": "pratashmit", "fullname": "Pratashmit Das", "marks": { "Information Technology": {"Theory": 15, "Practical": 7} } }
+     { "roll": "1", "username": "ananya", "fullname": "Ananya Ranjan", "marks": { "Information Technology": {"Theory": 37, "Practical": 27} } },
+       { "roll": "2", "username": "ipshita", "fullname": "Ipshita Kalita", "marks": { "Information Technology": {"Theory": 38, "Practical": 25} } },
+       { "roll": "3", "username": "ismail", "fullname": "Ismail Gani Choudhury", "marks": { "Information Technology": {"Theory": 41, "Practical": 26} } },
+       { "roll": "4", "username": "jash", "fullname": "Jash S Rehal", "marks": { "Information Technology": {"Theory": 31, "Practical": 27} } },
+       { "roll": "5", "username": "manveer", "fullname": "Manveer Singh Khatkar", "marks": { "Information Technology": {"Theory": 21, "Practical": 25} } },
+       { "roll": "6", "username": "mohit", "fullname": "Mohit Sharma", "marks": { "Information Technology": {"Theory": 20, "Practical": 25} } },
+       { "roll": "7", "username": "nimirisha", "fullname": "Nimirisha G Marak", "marks": { "Information Technology": {"Theory": 24, "Practical": 22} } },
+       { "roll": "8", "username": "palashdeep", "fullname": "Palashdeep Kalita", "marks": { "Information Technology": {"Theory": 22, "Practical": 25} } },
+       { "roll": "9", "username": "rohan", "fullname": "Rohan Deori", "marks": { "Information Technology": {"Theory": 21, "Practical": 25} } },
+       { "roll": "10", "username": "sagnik", "fullname": "Sagnik Sarkar", "marks": { "Information Technology": {"Theory": 28, "Practical": 27} } },
+       { "roll": "11", "username": "swadesh", "fullname": "Swadesh Pratik Rabha", "marks": { "Information Technology": {"Theory": 35, "Practical": 27} } },
+       { "roll": "12", "username": "yashika", "fullname": "Yashika Munot", "marks": { "Information Technology": {"Theory": 31, "Practical": 27} } },
+       { "roll": "13", "username": "pratashmit", "fullname": "Pratashmit Das", "marks": { "Information Technology": {"Theory": 19, "Practical": 10} } }
       
     ],
     "10": [
