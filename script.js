@@ -19,16 +19,15 @@ function generatePassword() {
   passwordDisplay.classList.add("bounce");
 }
 
-
-
 function login() {
   const username = document.getElementById("username").value.trim();
   const roll = document.getElementById("roll").value.trim();
   const classSelected = document.getElementById("class").value;
   const board = document.getElementById("board").value;
+  const exam = document.getElementById("exam").value;
   const enteredPass = document.getElementById("passwordInput").value.trim();
 
-  if (!username || !roll || !classSelected || !board || !enteredPass) {
+  if (!username || !roll || !classSelected || !board || !exam || !enteredPass) {
     alert("Please fill all fields");
     return;
   }
@@ -42,6 +41,7 @@ function login() {
     sessionStorage.setItem("roll", roll);
     sessionStorage.setItem("class", classSelected);
     sessionStorage.setItem("board", board);
+    sessionStorage.setItem("exam", exam);
     window.location.href = "student.html";
   } else if (usedOnce) {
     alert("❌ This password has already been used. Please generate a new one.");
@@ -55,6 +55,7 @@ function clearFields() {
   document.getElementById("username").value = "";
   document.getElementById("class").value = "";
   document.getElementById("board").value = "";
+  document.getElementById("exam").value = "";
   document.getElementById("passwordInput").value = "";
   document.getElementById("generatedPassword").textContent = "";
 }
