@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +31,18 @@
     <option value="A">A Level</option>
   </select>
 
+  <!-- Add Exam Selection -->
+  <select id="exam">
+    <option value="">📝 Select Exam</option>
+    <option value="first_assessment">1st Assessment</option>
+    <option value="half_yearly">Half Yearly</option>
+    <option value="second_assessment">2nd Assessment</option>
+    <option value="final_exam">Final Exam</option>
+  </select>
+
+  <div class="full-width"> <!-- Empty div to maintain grid layout -->
+  </div>
+
   <button onclick="generatePassword()" class="full-width">🔐 Generate Password</button>
   <p id="generatedPassword" class="password-display full-width"></p>
 
@@ -59,4 +70,3 @@
    
 </body>
 </html>
-
